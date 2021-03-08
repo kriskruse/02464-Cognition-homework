@@ -4,7 +4,7 @@ import cv2
 from scipy.signal import convolve2d
 
 # Settings
-filename = "MonaLisa.jpg"
+filename = "hermann.jpg"
 t = 0.3
 w = 0.1
 
@@ -26,9 +26,9 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 out = cv2.normalize(gray.astype('float'), None, 0.0, 1.0, cv2.NORM_MINMAX)
 
 # Test for kernel size 1 - 10
-for N in range(10):
+for N in range(100):
     convimg = convolve2d(out, kernel(N, w))
-    convimg = threshold(convimg, t)
+    # convimg = threshold(convimg, t)
     viewer1 = skimage.viewer.ImageViewer(convimg)
     viewer1.show()
     print(N)
